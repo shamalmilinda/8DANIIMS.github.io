@@ -1,0 +1,7 @@
+<center><font face="arial" color="white">© Check out our Usage Policy</font></center>
+	  
+	  <center><a href="http://ncs.io/UsagePolicy"><font face="arial" color="yellow"><u>Click to go</u></font></a></center><br>
+	  
+	  <center><font face="arial" color="white">To request a commercial license</font></center>
+	  
+	  <center><a href="http://ncs.io/Commercial"><font face="arial" color="yellow"><u>Click to go</u></font></a></center><br>
