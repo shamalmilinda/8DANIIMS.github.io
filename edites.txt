@@ -1,0 +1,29 @@
+<!-- ***** Main Banner_2 Area Start ***** -->
+  <div class="main-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 align-self-center">
+          <div class="header-text">
+            <h6>SPECIAL DAY,</h6>
+            <font color="#FAFFA5" size="10"><b>DJ PARTY.....</b></font><br>
+            <h2>COMING SOON!</h2>
+            <h6>WITH 0.4.1 beta 8D VERSION...</h6>
+            <font color="#ffffff" size="5">⦿ Collection of best 8D Audios ⦿</font><br><br>
+            <div class="buttons">
+            </div>
+          </div>
+        </div>
+      
+        <div class="col-lg-5 offset-lg-1">
+          <div class="owl-banner owl-carousel">
+            <div class="item">
+              <img src="assets/images/POSTER.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Main Banner_2 Area End ***** -->
+
+------------------------------------------------------------------------------
