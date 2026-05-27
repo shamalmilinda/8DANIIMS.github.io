@@ -1,57 +1,418 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ANIIMS FAMILY</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANIIMS FAMILY</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+BASE
+========================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:#0b0f14;
+  color:#eaeaea;
+  overflow-x:hidden;
+}
+
+/* =========================
+BACKGROUND
+========================= */
+#bgCanvas{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:#0b0f14;
+}
+
+/* =========================
+HERO
+========================= */
+.hero-wrap{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  padding:60px 6% 30px;
+}
+
+.hero-text{
+  max-width:650px;
+}
+
+.hero-text h1{
+  font-size:clamp(1.8rem,4vw,3.5rem);
+  font-weight:800;
+  background:linear-gradient(90deg,#7b61ff,#ff4fd8,#00e5ff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.hero-text p{
+  margin-top:12px;
+  color:#a9b0bb;
+  font-size:clamp(0.85rem,2vw,0.95rem);
+  line-height:1.6;
+}
+
+.tag{
+  display:inline-block;
+  margin-top:12px;
+  padding:6px 14px;
+  font-size:.75rem;
+  border-radius:40px;
+  background:rgba(123,97,255,0.15);
+  border:1px solid rgba(123,97,255,0.3);
+  color:#cfc7ff;
+}
+
+/* =========================
+ZEDGE BADGE
+========================= */
+.zedge-badge{
+  width:160px;
+  padding:12px;
+  border-radius:16px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(12px);
+  text-align:center;
+  animation:floatBadge 3s ease-in-out infinite;
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+.zedge-badge img{
+  width:60px;
+  height:60px;
+  object-fit:contain;
+}
+
+.zedge-badge span{
+  display:block;
+  margin-top:8px;
+  font-size:.75rem;
+  color:#cfc7ff;
+  font-weight:600;
+}
+
+@keyframes floatBadge{
+  0%{transform:translateY(0px);}
+  50%{transform:translateY(-8px);}
+  100%{transform:translateY(0px);}
+}
+
+/* =========================
+GRID (FULL RESPONSIVE FIX)
+========================= */
+.grid{
+  display:grid;
+
+  /* Desktop default */
+  grid-template-columns:repeat(4,1fr);
+
+  gap:18px;
+  padding:30px 6% 80px;
+
+  max-width:1200px;
+  margin:auto;
+}
+
+/* CARD */
+.card{
+  background:rgba(18,24,36,0.9);
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,0.06);
+  padding:14px;
+  transition:.3s;
+  backdrop-filter:blur(10px);
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 25px 60px rgba(0,0,0,0.6);
+}
+
+.name{
+  font-size:1rem;
+  font-weight:600;
+}
+
+.sub{
+  font-size:.8rem;
+  color:#9aa3b2;
+  margin-top:4px;
+}
+
+/* IMAGE */
+.media-main{
+  width:100%;
+  aspect-ratio:1/1;
+  margin:12px 0 8px;
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.media-main img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.3s;
+}
+
+.card:hover .media-main img{
+  transform:scale(1.04);
+}
+
+/* MINI GRID */
+.media-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:6px;
+}
+
+.media-grid img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:10px;
+  transition:.3s;
+}
+
+.media-grid img:hover{
+  transform:scale(1.05);
+}
+
+/* BUTTON */
+.btn{
+  display:inline-block;
+  margin-top:12px;
+  padding:10px 16px;
+  background:#7b61ff;
+  color:white;
+  text-decoration:none;
+  border-radius:40px;
+  font-size:.8rem;
+  font-weight:600;
+  transition:.3s;
+}
+
+.btn:hover{
+  background:#ff4fd8;
+  transform:translateY(-2px);
+}
+
+/* =========================
+FOOTER
+========================= */
+footer{
+  text-align:center;
+  padding:25px 15px;
+  margin-top:40px;
+  background:rgba(255,255,255,0.03);
+  border-top:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(12px);
+  color:#9aa3b2;
+  font-size:.85rem;
+}
+
+footer b{
+  color:white;
+}
+
+/* =========================
+RESPONSIVE BREAKPOINTS
+========================= */
+
+/* Tablet */
+@media(max-width:1024px){
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+/* Mobile */
+@media(max-width:600px){
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero-wrap{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .zedge-badge{
+    width:140px;
+  }
+}
+
+</style>
 </head>
+
 <body>
-  <header>
-    <h1 class="page-title">ANIIMS FAMILY</h1>
-  </header>
 
-  <main class="profiles-container">
-    <div class="profile-card">
-      <img src="7.jpg" alt="Profile 1" class="profile-img" />
-      <h2>DARK THUNDER</h2>
-      <a href="https://zedge.me/dark-thunder-341183255" class="profile-link">PROFILE</a>
+<!-- BACKGROUND -->
+<canvas id="bgCanvas"></canvas>
+
+<!-- HERO -->
+<div class="hero-wrap">
+
+  <div class="hero-text">
+    <h1>VISUAL ANIIMS</h1>
+
+    <p>
+      A modern creative wallpaper universe built for designers, creators and visual explorers.  
+      Discover cinematic profiles, aesthetic collections and high quality visual experiences in one place.
+    </p>
+
+    <div class="tag">Modern • Dark • Amoled</div>
+  </div>
+
+  <div class="zedge-badge">
+    <img src="Zedge.png">
+    <span>ZEDGE CREATOR</span>
+  </div>
+
+</div>
+
+<!-- GRID -->
+<section class="grid">
+
+  <div class="card">
+    <div class="name">DARK THUNDER</div>
+    <div class="sub">Super Amoled cinematic neon wallpapers</div>
+
+    <div class="media-main">
+      <img src="7.jpg">
     </div>
 
-    <!--<div class="profile-card">
-      <img src="5.jpg" alt="Profile 2" class="profile-img" />
-      <h2>PSYCHO STUDIO</h2>
-      <a href="https://zedge.me/psycho-studio" class="profile-link">PROFILE</a>
-    </div>-->
-
-    <!--<div class="profile-card">
-      <img src="6.jpg" alt="Profile 3" class="profile-img" />
-      <h2>WALL LAB</h2>
-      <a href="https://zedge.me/wall-lab" class="profile-link">PROFILE</a>
-    </div>-->
-
-    <div class="profile-card">
-      <img src="3.jpg" alt="Profile 3" class="profile-img" />
-      <h2>FRAME FOLIO</h2>
-      <a href="https://zedge.me/frame-folio" class="profile-link">PROFILE</a>
+    <div class="media-grid">
+      <img src="D1.jpg">
+      <img src="D2.jpg">
+      <img src="D3.jpg">
     </div>
 
-    <!--<div class="profile-card">
-      <img src="1.jpg" alt="Profile 4" class="profile-img" />
-      <h2>COLOUR COVE</h2>
-      <a href="https://zedge.me/colour-cove" class="profile-link">PROFILE</a>
-    </div>-->
+    <a class="btn" href="https://zedge.me/dark-thunder-341183255">Open Profile</a>
+  </div>
 
-     <!--<div class="profile-card">
-      <img src="2.jpg" alt="Profile 4" class="profile-img" />
-      <h2>DOTPIX</h2>
-      <a href="https://zedge.me/dotpix" class="profile-link">PROFILE</a>
-    </div>-->
-  </main>
+  <div class="card">
+    <div class="name">FRAME FOLIO</div>
+    <div class="sub">Super Amoled cinematic neon wallpapers</div>
 
-  <footer class="footer">
-    <p>- Powered by ANIIMS FAMILY -</p>
-    <p>&copy; 2026 ANIIMS FAMILY. All rights reserved.</p>
-  </footer>
+    <div class="media-main">
+      <img src="3.jpg">
+    </div>
+
+    <div class="media-grid">
+      <img src="F1.jpg">
+      <img src="F2.jpg">
+      <img src="F3.jpg">
+    </div>
+
+    <a class="btn" href="https://zedge.me/frame-folio">Open Profile</a>
+  </div>
+
+  <div class="card">
+    <div class="name">CRAZY BLACK ELITE</div>
+    <div class="sub">Super Amoled cinematic neon wallpapers</div>
+
+    <div class="media-main">
+      <img src="1.jpg">
+    </div>
+
+    <div class="media-grid">
+      <img src="C1.jpg">
+      <img src="C2.jpg">
+      <img src="C3.jpg">
+    </div>
+
+    <a class="btn" href="https://zedge.sng.link/At560/ay3k/r_85ee0fb7ac?_dl=https%3A%2F%2Fzedge.me%2Fcrazy-black-elite-1236834127&_fallback_redirect=https%3A%2F%2Fzedge.me%2Fcrazy-black-elite-1236834127">Open Profile</a>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 <b>VISUAL ANIIMS.</b> All rights reserved.
+</footer>
+
+<!-- BACKGROUND SCRIPT -->
+<script>
+
+const canvas = document.getElementById("bgCanvas");
+const ctx = canvas.getContext("2d");
+
+function resize(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+
+let particles = [];
+
+class Particle{
+  constructor(){
+    this.x = Math.random()*canvas.width;
+    this.y = Math.random()*canvas.height;
+    this.size = Math.random()*2;
+    this.speedX = (Math.random()-0.5)*0.6;
+    this.speedY = (Math.random()-0.5)*0.6;
+  }
+
+  update(){
+    this.x += this.speedX;
+    this.y += this.speedY;
+
+    if(this.x > canvas.width) this.x = 0;
+    if(this.x < 0) this.x = canvas.width;
+    if(this.y > canvas.height) this.y = 0;
+    if(this.y < 0) this.y = canvas.height;
+  }
+
+  draw(){
+    ctx.fillStyle = "rgba(123,97,255,0.6)";
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+    ctx.fill();
+  }
+}
+
+function init(){
+  particles = [];
+  for(let i=0;i<80;i++){
+    particles.push(new Particle());
+  }
+}
+init();
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  for(let p of particles){
+    p.update();
+    p.draw();
+  }
+
+  requestAnimationFrame(animate);
+}
+animate();
+
+window.addEventListener("resize",()=>{
+  resize();
+  init();
+});
+
+</script>
+
 </body>
 </html>
